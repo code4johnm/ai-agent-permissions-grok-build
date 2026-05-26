@@ -70,7 +70,7 @@ Processed dataset with 181 filtered participants (≥5 "always share" or "never 
 
 **Domains:** Health & Fitness, Finance, Shopping, Travel, Work, Entertainment, Social, Smart Home
 
-See `website.pdf` in root for interface screenshots.
+See `docs/website.pdf` for interface screenshots.
 
 ## Anonymization
 
