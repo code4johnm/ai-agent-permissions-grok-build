@@ -82,9 +82,9 @@ You are assisting with a **privacy-sensitive, security-relevant research prototy
 
 ## 4. PIPELINE DEPENDENCIES AND EXECUTION ORDER (CRITICAL)
 
-1. `python permission_cf_only.py` → produces `../results/cf_scores.csv` (and metrics)
-2. `python permission_ic_only.py` → independent
-3. `python permission_ic_cf.py` → **requires** cf_scores.csv from step 1
+1. `python3 permission_cf_only.py` → produces `../results/cf_scores.csv` (and metrics)
+2. `python3 permission_ic_only.py` → independent
+3. `python3 permission_ic_cf.py` → **requires** cf_scores.csv from step 1
 
 **Never** run hybrid before CF. The hybrid script will warn but may produce degraded or empty results.
 
@@ -151,7 +151,7 @@ All pipelines ultimately produce lists of (participant, query_id, data_type, pre
 cd src
 
 # Full research run (requires key for IC/hybrid)
-python permission_cf_only.py && python permission_ic_only.py && python permission_ic_cf.py
+python3 permission_cf_only.py && python3 permission_ic_only.py && python3 permission_ic_cf.py
 
 # Security quick checks
 pip-audit -r ../requirements.txt

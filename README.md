@@ -64,7 +64,8 @@ The prototype consists of three experimental permission inference pipelines plus
 - **CF-Only Baseline:** LightGCN graph neural collaborative filtering (TensorFlow/recommenders).
 - **IC-Only Baseline:** Pure in-context learning via OpenAI models (o4-mini / o3-mini).
 - **IC+CF Hybrid (Primary Contribution):** LLM reasoning augmented with top-K collaborative filtering scores injected into prompt context.
-- **Evaluation Harness:** Unified binary classification metrics (Accuracy, Precision, Recall, F1, FPR, FNR) with threshold optimization.
+- **Evaluation Harness:** Unified binary classification metrics + confidence threshold sweeps (reproduces paper's 94.4% high-conf accuracy at reduced coverage).
+- **Permission Assistant (NEW — paper future work):** Interactive runtime prototype (`src/permission_assistant.py`) of the hybrid usable system outlined in the paper Discussion/Conclusion (Sec 6). High-conf auto + defer-to-user (full 4 options), revocation, feedback-driven history update, audit logging. Directly targets the gaps "enforcing predictions, improving robustness, and designing usable interfaces".
 
 **Permission Model (Research Definition):**
 Four-level user preference collected per data type per scenario:
@@ -137,18 +138,25 @@ OPENAI_MODEL=o4-mini
 cd src
 
 # 1. CF baseline (no API key required)
-python permission_cf_only.py
+python3 permission_cf_only.py
 
 # 2. IC-only baseline (requires API key)
-python permission_ic_only.py
+python3 permission_ic_only.py
 
 # 3. IC+CF hybrid (requires cf_scores.csv + API key)
-python permission_ic_cf.py
+python3 permission_ic_cf.py
 ```
 
 All outputs land in `../results/`.
 
 **Strong Recommendation:** Never execute on systems containing CUI, PII, or classified data. Use isolated research VMs or containers with egress controls.
+
+**Paper Future Work Demo (no API key required):**
+```bash
+cd src
+python3 permission_assistant.py --demo
+```
+This runs an interactive session exercising the exact hybrid human-AI permission loop described as future work in the original paper.
 
 ---
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 LLM Inference without Collaborative Filtering (IC Only Baseline)
 
@@ -16,21 +17,25 @@ Requirements:
     - OpenAI API key (set via environment variable)
 """
 
-import os
-import sys
+# Target: Linux platforms (PEP 8 compliant)
+
 import json
-import random
-from openai import OpenAI
-from openai import APIError, RateLimitError, APIConnectionError
-import re
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from dotenv import load_dotenv
-from tqdm import tqdm
-from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 import logging
+import os
+import random
+import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+from dotenv import load_dotenv
+from openai import APIConnectionError, APIError, OpenAI, RateLimitError
+from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
+from tqdm import tqdm
 
 # Import unified evaluation utilities
-from evaluation_utils import calculate_metrics, save_metrics, print_metrics
+from evaluation_utils import (
+    calculate_metrics, save_metrics, print_metrics,
+    robust_extract_predictions as extract_predictions
+)
 
 # Load environment variables from .env file
 load_dotenv()
@@ -175,29 +180,8 @@ def llm_inference(prompt):
         raise
 
 
-def extract_predictions(response):
-    """
-    Extract JSON predictions from LLM response.
-
-    Args:
-        response: Raw LLM response text
-
-    Returns:
-        list: Parsed predictions
-    """
-    try:
-        # Try to find JSON array in response
-        json_match = re.search(r'\[.*\]', response, re.DOTALL)
-        if json_match:
-            return json.loads(json_match.group(0))
-        else:
-            # Try to parse entire response as JSON
-            return json.loads(response)
-    except json.JSONDecodeError as e:
-        logger.error(f"Error parsing LLM response: {e}")
-        logger.debug(f"Response: {response[:500]}...")
-        return []
-
+# extract_predictions is now imported from evaluation_utils (robust implementation)
+# Original fragile regex version removed per paper robustness recommendations.
 
 def process_participant(participant_id, participant_data):
     """

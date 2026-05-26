@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 LightGCN Collaborative Filtering Model (CF Only Baseline)
 
@@ -18,11 +19,14 @@ Outputs:
     - Model metrics (ROC-AUC, precision, recall)
 """
 
-import os
+# Target: Linux platforms (PEP 8 compliant)
+
 import json
+import os
 import re
-import pandas as pd
+
 import numpy as np
+import pandas as pd
 import tensorflow as tf
 
 # Suppress TensorFlow warnings
@@ -37,7 +41,13 @@ from recommenders.utils.constants import SEED as DEFAULT_SEED
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 # Import unified evaluation utilities
-from evaluation_utils import calculate_metrics, save_metrics, save_predictions, save_results_csv, print_metrics
+from evaluation_utils import (
+    calculate_metrics,
+    print_metrics,
+    save_metrics,
+    save_predictions,
+    save_results_csv,
+)
 
 # Configuration
 TOP_K = 5
@@ -407,8 +417,15 @@ def main():
     # Filter out rating=0 from training data, but keep them in test data for evaluation
     train_positive_only = train[train['rating'] > 0].copy()
 
-    print(f"Train: {len(train)} interactions ({len(train_positive_only)} positive for model training)")
-    print(f"Test: {len(test)} interactions (positive: {len(test[test['rating'] > 0])}, negative: {len(test[test['rating'] == 0])})")
+    print(
+        f"Train: {len(train)} interactions "
+        f"({len(train_positive_only)} positive for model training)"
+    )
+    print(
+        f"Test: {len(test)} interactions "
+        f"(positive: {len(test[test['rating'] > 0])}, "
+        f"negative: {len(test[test['rating'] == 0])})"
+    )
 
     # Train model (using only positive examples)
     model, data = train_lightgcn(train_positive_only, test)

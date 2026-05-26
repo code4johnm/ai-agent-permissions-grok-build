@@ -31,9 +31,9 @@ pip install -r requirements.txt
 
 # 3. Execute pipelines (order matters for hybrid)
 cd src
-python permission_cf_only.py          # Generates cf_scores.csv
-python permission_ic_only.py
-python permission_ic_cf.py
+python3 permission_cf_only.py          # Generates cf_scores.csv
+python3 permission_ic_only.py
+python3 permission_ic_cf.py
 
 # 4. (Optional) Manual review of results/*.json and *.csv
 ```
