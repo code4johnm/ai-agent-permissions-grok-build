@@ -189,6 +189,25 @@ ai-agent-permissions-grok-build-private/
 
 See individual `docs/` artifacts for detailed specifications.
 
+## Documentation
+
+The following documents provide detailed technical guidance for the research prototype. All are located in the `docs/` directory:
+
+| Document | Description |
+|----------|-------------|
+| [AI-Agent-Permissions-Context.md](docs/AI-Agent-Permissions-Context.md) | Context file and usage guidance for LLM coding agents (Grok Build, Claude, Cursor, etc.) |
+| [Architecture.md](docs/Architecture.md) | System and data-flow architecture, including Mermaid component and sequence diagrams |
+| [Build-Process.md](docs/Build-Process.md) | Reproducible builds, dependency management, SBOM, and supply-chain considerations |
+| [Compliance-Gaps-and-Remediation-Roadmap.md](docs/Compliance-Gaps-and-Remediation-Roadmap.md) | Security gap analysis against recognized standards and phased remediation roadmap |
+| [Configuration.md](docs/Configuration.md) | Environment variables, hard-coded parameters, and secure configuration baselines |
+| [CONTRIBUTING.md](docs/CONTRIBUTING.md) | Contribution guidelines and security review expectations |
+| [Deployment.md](docs/Deployment.md) | Current execution model and considerations for future deployment |
+| [Security-Hardening.md](docs/Security-Hardening.md) | Security hardening guidance, control mappings, and LLM-specific risks |
+| [SECURITY.md](docs/SECURITY.md) | Vulnerability reporting and known security limitations |
+| [Troubleshooting.md](docs/Troubleshooting.md) | Diagnostic procedures and common error resolution |
+
+**Note:** `website.pdf` (user study interface screenshots) is also available in `docs/`.
+
 ---
 
 ## 8. DATA HANDLING AND PRIVACY
