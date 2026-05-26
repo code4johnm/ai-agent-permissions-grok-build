@@ -9,33 +9,29 @@
 ---
 
 **Important Notice**  
-This is independent research documentation for an academic prototype. It is **not** an official U.S. government, Department of Defense, or Department of War product. References to security standards (NIST, STIGs, etc.) are provided as best-practice guidance only.
+This is independent research documentation for an academic prototype (IEEE S&P 2026). It is **not** an official U.S. government product. See the full security notice and usage restrictions below.
 
 ## 1. PURPOSE
 
-This document provides the authoritative entry point and system-level description for the **AI Agent Permissions Research Prototype**. The prototype implements and evaluates automated data access permission prediction mechanisms for LLM-based autonomous agents.
-
-The system addresses a critical security and operational requirement in future agentic AI deployments: the ability to predict and enforce user-specific data-sharing preferences at machine speed while maintaining traceability, auditability, and alignment with human intent.
+Authoritative entry point for the **AI Agent Permissions Research Prototype** (IEEE S&P 2026). It implements and evaluates automated permission prediction (LightGCN CF + OpenAI IC / IC+CF hybrid) for LLM-based agents against a 181-participant user study dataset.
 
 **Primary Objectives:**
-- Evaluate hybrid machine learning + large language model approaches for permission decision automation.
-- Provide reproducible baselines (Collaborative Filtering, In-Context Learning, and Hybrid) against a rigorously collected human-subject ground truth dataset.
-- Establish a foundation for future integration into secure, RMF-accredited agent permission guardrails in tactical and enterprise environments.
+- Reproducible baselines for permission decision automation.
+- Foundation for future RMF-accredited guardrails in high-security environments.
 
-**WARNING:** This is a **RESEARCH PROTOTYPE** developed under academic auspices (IEEE S&P 2026). It has **NOT** completed Risk Management Framework (RMF) assessment, Security Technical Implementation Guide (STIG) hardening, or Authority to Operate (ATO) processes. It is **NOT AUTHORIZED** for use on classified networks, SABI environments, or operational tactical systems without substantial additional engineering, accreditation, and authorization.
+**See also:** [docs/Architecture.md](docs/Architecture.md) and [docs/Compliance-Gaps-and-Remediation-Roadmap.md](docs/Compliance-Gaps-and-Remediation-Roadmap.md).
+
+**WARNING:** This is a **RESEARCH PROTOTYPE** (IEEE S&P 2026). It has not completed RMF assessment, STIG hardening, or ATO processes and is **NOT AUTHORIZED** for classified, SABI, or operational use. See [docs/Security-Hardening.md](docs/Security-Hardening.md) and [docs/Compliance-Gaps-and-Remediation-Roadmap.md](docs/Compliance-Gaps-and-Remediation-Roadmap.md) for the full gap analysis and hardening roadmap.
 
 ---
 
 ## 2. SCOPE AND APPLICABILITY
 
-**Scope:** This repository contains the complete experimental apparatus (data, source code, evaluation harness) described in the associated IEEE Symposium on Security and Privacy 2026 paper.
+**Scope:** Complete experimental apparatus (data, source code, evaluation harness) from the IEEE S&P 2026 paper.
 
-**Applicability:** This documentation is intended for researchers, security engineers, and developers working on permission systems for AI agents. It may be especially relevant to organizations that must meet high security and privacy standards.
+**Applicability:** Researchers, security engineers, and developers working on AI agent permission systems, especially those subject to high security/privacy requirements.
 
-**Target Environments (Future Hardened Variants):**
-- Air-gapped tactical edge nodes
-- SABI / classified processing enclaves
-- Enterprise AI platforms subject to strong security and privacy requirements (e.g., NIST SP 800-53 and CNSSI 1253 overlays)
+**Target (Future Hardened) Environments:** Air-gapped tactical nodes, SABI/classified enclaves, and enterprise AI platforms (NIST 800-53 / CNSSI 1253 overlays).
 
 ---
 

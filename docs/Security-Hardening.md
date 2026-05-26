@@ -8,31 +8,30 @@
 
 ---
 
-This document provides security hardening guidance and gap analysis for the AI Agent Permissions Research Prototype. It draws on widely recognized cybersecurity standards and best practices (including NIST SP 800-53, CNSSI 1253, NSA Kubernetes guidance, relevant STIGs, the NIST AI Risk Management Framework, and the OWASP LLM Top 10) as useful references for high-assurance environments. It is not an official government document.
+This document provides security hardening guidance and gap analysis for the AI Agent Permissions Research Prototype. It is not an official government document.
 
 ## 1. PURPOSE
 
-This document provides a comprehensive security hardening roadmap, control mapping, and gap analysis for the AI Agent Permissions Research Prototype. It identifies current deficiencies against widely recognized cybersecurity standards and best practices, and outlines steps that would be prudent before considering integration into any production or high-security system.
+Comprehensive hardening roadmap and NIST 800-53 / AI RMF control mapping. Identifies deficiencies and outlines prudent steps before any production or high-security use.
 
-**Scope:** All code, data, build artifacts, execution environments, and future deployment targets associated with this prototype.
+**Scope:** All code, data, build artifacts, and future deployment targets.
 
-**Intended Audience:** Security Control Assessors (SCA), Authorizing Officials (AO), System Security Engineers, AI/ML platform teams, and program managers evaluating this technology for mission use.
+**Intended Audience:** Security Control Assessors, Authorizing Officials, system security engineers, and AI platform teams. See [docs/Compliance-Gaps-and-Remediation-Roadmap.md](Compliance-Gaps-and-Remediation-Roadmap.md) for the executive roadmap.
 
 ---
 
 ## 2. EXECUTIVE SUMMARY – CURRENT SECURITY POSTURE
 
-**Overall Assessment:** Research-grade prototype. **HIGH RISK** for any environment handling CUI, PII, or mission data. Multiple critical and high control deficiencies exist across the NIST 800-53 control families.
+**Overall Assessment:** Research-grade prototype. **HIGH RISK** for CUI, PII, or mission data. Multiple critical NIST 800-53 deficiencies exist.
 
 **Primary Risk Vectors:**
-1. **Uncontrolled Third-Party Data Sharing (OpenAI)** – All in-context learning paths exfiltrate user behavioral profiles and query semantics to commercial LLM providers. Violates SC-7, SC-8, AC-17, MP-7, and data sovereignty requirements.
-2. **Prompt Injection & Adversarial ML** – Direct concatenation of untrusted user history and query text into LLM system prompts with no isolation, no guardrails, and no output validation. Maps to multiple LLM Top 10 items (Prompt Injection, Data Leakage, etc.).
-3. **Supply Chain Compromise** – Loose dependency pinning; no SBOM; no reproducible builds; no signed artifacts. High risk under SSDF and SLSA expectations.
-4. **Insufficient Audit & Accountability** – Only basic application logging. No security-relevant event capture, no integrity protection of logs, no centralized collection.
-5. **Inadequate Secrets & Credential Management** – .env file pattern violates IA-5(1), SC-28, and AC-6.
-6. **Absence of RMF Artifacts** – No System Security Plan (SSP), no control traceability matrix, no risk assessment, no POA&M.
+- Uncontrolled exfiltration to commercial LLMs (SC-7/SC-8).
+- No prompt injection defenses or output validation.
+- Weak supply chain (no SBOM, loose pins).
+- Inadequate audit logging and secrets management.
+- Complete absence of RMF artifacts (SSP, POA&M, ATO path).
 
-**Residual Risk if Deployed Without Remediation:** Very High. The current implementation is likely to result in unauthorized disclosure of privacy-sensitive data, model poisoning, or supply-chain issues if used without substantial additional hardening.
+**Residual Risk:** Very High without substantial additional hardening. See the prioritized remediation roadmap in [docs/Compliance-Gaps-and-Remediation-Roadmap.md](Compliance-Gaps-and-Remediation-Roadmap.md).
 
 ---
 

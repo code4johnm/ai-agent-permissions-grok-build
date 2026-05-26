@@ -10,16 +10,16 @@
 
 ## 1. EXECUTIVE SUMMARY
 
-A comprehensive analysis of the ai-agent-permissions-grok-build-private codebase against widely recognized security standards (including NIST SP 800-53, CNSSI 1253, the NIST AI Risk Management Framework, NSA Kubernetes hardening guidance, relevant STIGs, and the OWASP LLM Top 10) reveals **critical and high-severity security gaps**.
+Analysis against NIST SP 800-53, CNSSI 1253, NIST AI RMF, NSA Kubernetes guidance, relevant STIGs, and OWASP LLM Top 10 reveals **critical and high-severity security gaps**.
 
-**Overall Posture:** This is a research prototype only. It has not been designed or reviewed for use in production, high-security, or regulated environments. The current implementation is not suitable for systems handling sensitive data without substantial additional engineering and review.
+**Overall Posture:** Research prototype only. Not suitable for production, CUI, or classified use without substantial additional engineering. See [docs/Security-Hardening.md](Security-Hardening.md) for the detailed control mapping.
 
 **Highest-Risk Findings:**
-1. Uncontrolled exfiltration of privacy-sensitive user profiles to commercial LLM providers.
-2. Complete absence of prompt injection defenses and LLM output validation.
-3. No audit logging suitable for security-sensitive environments.
-4. No supply chain security (SR family, CM-8, no SBOM, loose dependencies).
-5. No RMF artifacts whatsoever (no SSP, no control traceability, no risk assessment, no ATO path initiated).
+1. Uncontrolled exfiltration of privacy-sensitive profiles to commercial LLM providers.
+2. No prompt injection defenses or output validation.
+3. Inadequate audit logging and secrets management.
+4. No supply-chain controls (SBOM, signed artifacts, pinned dependencies).
+5. Complete absence of RMF artifacts (SSP, POA&M, ATO path).
 
 ---
 

@@ -15,15 +15,15 @@
 
 ## 1. PURPOSE
 
-This document describes the logical, physical, and data architectures of the AI Agent Permissions Research Prototype. It provides traceability from research objectives through implemented components, data flows, and evaluation pipelines. The architecture is presented using industry-standard notation (Mermaid) suitable for security control assessors, system engineers, and future transition teams.
+Describes the logical, physical, and data architectures of the prototype with traceability from research objectives to components and pipelines. Uses Mermaid diagrams suitable for assessors and engineers.
 
-**Scope:** All components, data artifacts, and execution flows present in the current research prototype. Future operational architectures will differ substantially (see Section 7).
+**Scope:** Current research prototype only. See Section 7 for the future accredited target architecture.
 
 ---
 
 ## 2. SYSTEM DESCRIPTION AND RESEARCH OBJECTIVES
 
-**Mission:** Develop and rigorously evaluate automated techniques to predict human data-sharing permission preferences for LLM-based agentic systems, thereby reducing user burden while preserving privacy intent.
+**Mission:** Rigorously evaluate automated techniques to predict user permission preferences for LLM agents, reducing user burden while preserving privacy intent.
 
 **Key Research Questions Addressed:**
 - Can collaborative filtering (CF) on historical permission decisions improve prediction accuracy over pure in-context learning (IC)?
